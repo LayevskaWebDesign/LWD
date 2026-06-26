@@ -21,15 +21,21 @@ contratos, correos a prospectos, mockups) como las implementaciones de las landi
 - Antes de subir cambios al remoto, confirma con el equipo (rama `main` es producción).
 - `skills-bundle/` está en `.gitignore`: es una herramienta local, **no se versiona**.
 
-## Uso de skills (`skills-bundle/`)
+## Uso de skills
 
-Este proyecto incluye un bundle local de ~99 skills en `skills-bundle/`. Cada skill vive en
-`skills-bundle/<nombre>/SKILL.md` con su `name` y `description`.
+Hay **28 skills curadas** instaladas en `~/.claude/skills/` (carpeta personal). Se **cargan
+automáticamente al iniciar cada sesión** de Claude Code — no requieren ningún comando de
+inicialización. El bundle completo (~99) queda archivado en `skills-bundle/` (ignorado por git)
+como fuente; para añadir más, cópialas desde ahí a `~/.claude/skills/<nombre>/`.
 
-**Regla general:** antes de empezar una tarea, evalúa si alguna skill del bundle encaja y
-**úsala cuando sea prudente** — es decir, cuando la tarea coincide claramente con el propósito
-de la skill y aplicarla mejora la calidad o reduce el riesgo. No fuerces el uso de una skill
-si la tarea es trivial o no aplica. Ante la duda, consulta primero el `SKILL.md` correspondiente.
+**Cómo invocarlas:**
+- Automático: Claude llama la skill vía la herramienta Skill cuando la tarea encaja.
+- Manual: el usuario escribe `/<nombre-de-skill>`.
+
+**Regla general:** antes de empezar una tarea, evalúa si alguna skill encaja y **úsala cuando
+sea prudente** — es decir, cuando la tarea coincide claramente con el propósito de la skill y
+aplicarla mejora la calidad o reduce el riesgo. No fuerces el uso de una skill si la tarea es
+trivial o no aplica. Ante la duda, consulta primero su `description`.
 
 Skills más relevantes para este proyecto, por categoría:
 
@@ -59,6 +65,7 @@ Skills más relevantes para este proyecto, por categoría:
 - `insecure-defaults`, `semgrep`, `codeql` — detección de vulnerabilidades.
 - `supply-chain-risk-auditor`, `agentic-actions-auditor` — auditoría de dependencias y acciones.
 
-> Para descubrir la skill adecuada, revisa el `description` en `skills-bundle/<nombre>/SKILL.md`.
-> Hay más skills de las listadas aquí (fuzzing, contratos blockchain, etc.); úsalas solo si
-> el contexto lo amerita.
+> Las listadas arriba son las que están instaladas y activas en `~/.claude/skills/`.
+> En `skills-bundle/` hay más (fuzzing, contratos blockchain, etc.) que NO están activas;
+> si alguna hace falta, cópiala a `~/.claude/skills/<nombre>/` y estará disponible en la
+> siguiente sesión.
