@@ -1,0 +1,285 @@
+/* ============================================================
+   MUNDO I · ESTILOS LOCALES — V2 ATLAS DE MUNDOS
+   ============================================================
+   Slideshow Ken Burns + tipografía Fraunces editorial.
+   ============================================================ */
+
+/* Tokens locales del Mundo I */
+.world-one {
+  --w1-bg-deep: #070F1A;
+  --w1-bg: #0E2435;
+  --w1-bg-mid: #1C4058;
+  --w1-bg-far: #2A5775;
+  --w1-gold: #DDC289;
+  --w1-gold-bright: #F2D88A;
+  --w1-ivory: #FAF7F2;
+  --w1-ivory-soft: rgba(250, 247, 242, 0.72);
+}
+
+/* ===========================================================
+   ATLAS BACKGROUND
+   =========================================================== */
+.world-one__atlas {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  background: #070F1A; /* fallback antes de que carguen las imgs */
+}
+
+.atlas-of-worlds {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.atlas-of-worlds--static {
+  /* mismo box, sin animaciones */
+}
+
+.atlas-frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  will-change: transform, opacity;
+}
+
+.atlas-frame__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  /* En caso de que la imagen aún no exista, un patrón cálido visible */
+  background:
+    radial-gradient(ellipse at 30% 30%, #1C4058 0%, #0E2435 60%, #070F1A 100%);
+}
+
+/* Vignette suave para anclar la lectura del copy */
+.atlas-of-worlds__vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at center,
+      transparent 35%,
+      rgba(7, 15, 26, 0.55) 90%,
+      rgba(7, 15, 26, 0.92) 110%);
+}
+
+/* Grain procedural — acuarela */
+.atlas-of-worlds__grain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.10;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+}
+
+/* Overlay navy para fundir con paleta Layevska */
+.atlas-of-worlds__overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg,
+      rgba(7, 15, 26, 0.40) 0%,
+      rgba(14, 36, 53, 0.30) 35%,
+      rgba(14, 36, 53, 0.55) 100%);
+}
+
+/* Indicador de progreso — 8 puntos discretos */
+.atlas-of-worlds__progress {
+  position: absolute;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  display: flex;
+  gap: 8px;
+  z-index: 5;
+}
+
+.atlas-of-worlds__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(250, 247, 242, 0.22);
+  transition: background 0.6s ease, transform 0.6s ease;
+}
+
+.atlas-of-worlds__dot.is-active {
+  background: var(--w1-gold);
+  transform: scale(1.4);
+  box-shadow: 0 0 12px rgba(221, 194, 137, 0.6);
+}
+
+/* ===========================================================
+   CONTENIDO EDITORIAL — H1 + SUB + CTAs
+   =========================================================== */
+.world-one__content {
+  pointer-events: none;
+}
+.world-one__content > * {
+  pointer-events: auto;
+}
+
+/* Eyebrow — chip pequeño "Layevska Web Design" con líneas decorativas */
+.world-one__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  color: rgba(221, 194, 137, 0.85);
+  margin-bottom: 2.5rem;
+}
+
+.world-one__eyebrow-line {
+  display: inline-block;
+  width: 40px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(221, 194, 137, 0.5), transparent);
+}
+
+/* H1 editorial — Fraunces grande */
+.world-one__h1 {
+  font-family: 'Fraunces', serif;
+  font-weight: 400;
+  font-variation-settings: "opsz" 144, "SOFT" 50;
+  font-size: clamp(2.5rem, 6.8vw, 5.75rem);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  color: var(--w1-ivory);
+  margin: 0;
+  text-wrap: balance;
+  text-shadow: 0 2px 24px rgba(7, 15, 26, 0.55);
+}
+
+.world-one__h1-line {
+  display: block;
+}
+
+.world-one__h1-em {
+  font-style: italic;
+  font-weight: 500;
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+  background: linear-gradient(180deg, #F2D88A 0%, #DDC289 45%, #C9A961 90%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Variante alternativa: "real" en salmon/ivory para crear contraste con "mundo" en oro */
+.world-one__h1-em--alt {
+  background: linear-gradient(180deg, #F1CBBF 0%, #D8B0AB 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Subtítulo — pausado, italic suave */
+.world-one__sub {
+  margin: 1.75rem auto 0;
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-variation-settings: "opsz" 14, "SOFT" 100;
+  font-size: clamp(1.0625rem, 1.6vw, 1.375rem);
+  line-height: 1.6;
+  letter-spacing: 0.005em;
+  color: var(--w1-ivory-soft);
+  max-width: 640px;
+  text-wrap: balance;
+}
+
+.world-one__sub-divider {
+  display: inline-block;
+  width: 8px;
+  height: 1px;
+  background: rgba(221, 194, 137, 0.6);
+  margin: 0 12px 4px;
+  vertical-align: middle;
+}
+
+/* ===========================================================
+   SCROLL HINT
+   =========================================================== */
+.world-one__scrollhint {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  pointer-events: none;
+}
+
+.world-one__scrollhint-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: rgba(250, 247, 242, 0.45);
+}
+
+.world-one__scrollhint-line {
+  display: block;
+  width: 1px;
+  height: 36px;
+  background: linear-gradient(180deg, rgba(221, 194, 137, 0.7), transparent);
+  animation: scrollhint-pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes scrollhint-pulse {
+  0%, 100% { opacity: 0.4; transform: scaleY(1); }
+  50% { opacity: 1; transform: scaleY(1.2); }
+}
+
+/* ===========================================================
+   ACCESIBILIDAD
+   =========================================================== */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0);
+  white-space: nowrap; border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .atlas-frame { animation: none !important; transition: none !important; }
+  .world-one__scrollhint-line { animation: none !important; opacity: 0.6; }
+}
+
+/* ===========================================================
+   RESPONSIVE
+   =========================================================== */
+@media (max-width: 640px) {
+  .world-one__eyebrow {
+    font-size: 9px;
+    margin-bottom: 1.75rem;
+  }
+  .world-one__eyebrow-line {
+    width: 26px;
+  }
+  .world-one__sub {
+    margin-top: 1.25rem;
+  }
+  .world-one__sub-divider {
+    display: block;
+    margin: 0.5rem auto;
+    width: 28px;
+  }
+  .atlas-of-worlds__progress {
+    bottom: 1rem;
+    right: 1rem;
+  }
+}

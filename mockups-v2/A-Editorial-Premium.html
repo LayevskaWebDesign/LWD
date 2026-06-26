@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Layevska Web Design · Opción A · Editorial Premium</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --navy:#0A1F44;
+    --navy-deep:#061330;
+    --cream:#F5EFE3;
+    --cream-warm:#EDE5D3;
+    --gold:#B8964A;
+    --gold-light:#D4B26E;
+    --ink:#1A1A1A;
+    --muted:#6B6B6B;
+    --line:#D9D2C0;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    font-weight:400;line-height:1.65;
+    overflow-x:hidden;
+  }
+  .container{max-width:1240px;margin:0 auto;padding:0 40px}
+  .display{font-family:'Playfair Display',serif}
+  .eyebrow{
+    font-family:'Inter',sans-serif;font-size:11px;font-weight:500;
+    letter-spacing:0.32em;text-transform:uppercase;color:var(--gold);
+  }
+
+  /* HEADER */
+  header{
+    position:sticky;top:0;z-index:100;
+    background:rgba(245,239,227,0.92);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+    padding:20px 40px;
+    display:flex;justify-content:space-between;align-items:center;
+  }
+  .logo{
+    font-family:'Playfair Display',serif;
+    font-weight:500;font-size:22px;letter-spacing:0.04em;
+    color:var(--navy);
+  }
+  .logo em{color:var(--gold);font-style:normal}
+  nav a{
+    color:var(--navy);text-decoration:none;
+    margin-left:36px;font-size:13px;font-weight:500;
+    letter-spacing:0.05em;
+  }
+  nav a:hover{color:var(--gold)}
+  .nav-cta{
+    background:var(--navy);color:var(--cream)!important;
+    padding:10px 22px;border-radius:2px;
+  }
+  .nav-cta:hover{background:var(--navy-deep);color:var(--gold-light)!important}
+
+  /* HERO */
+  .hero{
+    padding:100px 0 80px;
+    border-bottom:1px solid var(--line);
+  }
+  .hero-grid{
+    display:grid;grid-template-columns:1.3fr 1fr;gap:80px;
+    align-items:end;
+  }
+  .hero h1{
+    font-family:'Playfair Display',serif;
+    font-size:clamp(3rem,6vw,5.5rem);
+    line-height:1.05;font-weight:400;
+    color:var(--navy);
+    margin:24px 0 32px;letter-spacing:-0.02em;
+  }
+  .hero h1 em{color:var(--gold);font-style:italic;font-weight:400}
+  .hero-sub{
+    font-size:18px;line-height:1.6;color:var(--muted);
+    max-width:460px;margin-bottom:40px;
+  }
+  .hero-ctas{display:flex;gap:16px;align-items:center}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:16px 32px;border-radius:2px;
+    font-family:'Inter',sans-serif;font-size:13px;
+    letter-spacing:0.12em;text-transform:uppercase;font-weight:500;
+    text-decoration:none;cursor:pointer;border:1px solid transparent;
+    transition:all .3s ease;
+  }
+  .btn-primary{background:var(--navy);color:var(--cream)}
+  .btn-primary:hover{background:var(--gold);color:var(--navy)}
+  .btn-outline{background:transparent;color:var(--navy);border-color:var(--navy)}
+  .btn-outline:hover{background:var(--navy);color:var(--cream)}
+  .hero-meta{
+    border-left:2px solid var(--gold);
+    padding-left:24px;
+  }
+  .hero-meta-item{margin-bottom:28px}
+  .hero-meta-item:last-child{margin-bottom:0}
+  .hero-meta-label{font-size:11px;letter-spacing:0.22em;color:var(--gold);text-transform:uppercase;font-weight:500;margin-bottom:6px}
+  .hero-meta-value{font-family:'Playfair Display',serif;font-size:32px;color:var(--navy);line-height:1}
+  .hero-meta-detail{font-size:13px;color:var(--muted);margin-top:6px}
+
+  /* SECTION ESTRUCTURA */
+  section{padding:120px 0}
+  .section-navy{background:var(--navy);color:var(--cream)}
+  .section-navy .eyebrow{color:var(--gold-light)}
+  .section-cream-warm{background:var(--cream-warm)}
+
+  .section-title{
+    font-family:'Playfair Display',serif;
+    font-size:clamp(2.25rem,4vw,3.5rem);
+    line-height:1.1;font-weight:400;
+    margin:16px 0 60px;letter-spacing:-0.01em;
+  }
+  .section-navy .section-title{color:var(--cream)}
+
+  /* DIFERENCIADORES */
+  .diff-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:0;
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+  }
+  .diff-card{
+    padding:48px 32px;
+    border-right:1px solid var(--line);
+  }
+  .diff-card:last-child{border-right:none}
+  .diff-num{
+    font-family:'Playfair Display',serif;
+    font-size:48px;color:var(--gold);
+    font-style:italic;line-height:1;margin-bottom:16px;
+  }
+  .diff-card h3{
+    font-family:'Playfair Display',serif;
+    font-size:22px;font-weight:500;color:var(--navy);
+    margin-bottom:12px;
+  }
+  .diff-card p{color:var(--muted);font-size:15px;line-height:1.6}
+
+  /* PRECIOS */
+  .prices-grid{
+    display:grid;grid-template-columns:1fr 1fr;gap:32px;
+  }
+  .price-card{
+    background:var(--cream);
+    padding:48px 40px;
+    border:1px solid var(--line);
+    position:relative;
+  }
+  .price-card.featured{
+    background:var(--navy);
+    color:var(--cream);
+    border-color:var(--navy);
+  }
+  .price-card.featured .price-label{color:var(--gold-light)}
+  .price-card.featured h3{color:var(--cream)}
+  .price-card.featured .price-amount{color:var(--gold-light)}
+  .price-card.featured .price-feature{color:var(--cream);border-color:rgba(245,239,227,0.15)}
+  .price-card.featured .price-meta{color:rgba(245,239,227,0.7)}
+  .price-card.featured .btn-outline{color:var(--cream);border-color:var(--cream)}
+  .price-card.featured .btn-outline:hover{background:var(--cream);color:var(--navy)}
+  .price-badge{
+    position:absolute;top:-12px;left:40px;
+    background:var(--gold);color:var(--navy);
+    padding:6px 16px;font-size:11px;font-weight:500;
+    letter-spacing:0.18em;text-transform:uppercase;
+  }
+  .price-label{
+    font-size:11px;letter-spacing:0.25em;
+    color:var(--gold);text-transform:uppercase;
+    font-weight:500;margin-bottom:8px;
+  }
+  .price-card h3{
+    font-family:'Playfair Display',serif;
+    font-size:28px;color:var(--navy);font-weight:500;
+    margin-bottom:24px;
+  }
+  .price-amount{
+    font-family:'Playfair Display',serif;
+    font-size:64px;color:var(--navy);line-height:1;
+    margin-bottom:8px;
+  }
+  .price-meta{color:var(--muted);font-size:14px;margin-bottom:32px}
+  .price-feature{
+    padding:14px 0;
+    border-bottom:1px solid var(--line);
+    font-size:14px;
+    display:flex;gap:12px;
+  }
+  .price-feature::before{content:"—";color:var(--gold)}
+  .price-card .btn{margin-top:32px;width:100%;justify-content:center}
+
+  /* SOBRE */
+  .about-grid{
+    display:grid;grid-template-columns:1fr 1fr;gap:80px;
+    align-items:center;
+  }
+  .about-image{
+    aspect-ratio:4/5;
+    background:linear-gradient(135deg, var(--navy) 0%, var(--navy-deep) 100%);
+    position:relative;overflow:hidden;
+  }
+  .about-image::after{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(circle at 30% 20%, rgba(184,150,74,0.2), transparent 60%);
+  }
+  .about-image-label{
+    position:absolute;bottom:32px;left:32px;
+    color:var(--cream);font-family:'Playfair Display',serif;
+    font-style:italic;font-size:14px;
+    border-left:2px solid var(--gold);padding-left:14px;
+    z-index:2;
+  }
+  .about h2{
+    font-family:'Playfair Display',serif;
+    font-size:clamp(2rem,3.5vw,2.75rem);
+    color:var(--navy);font-weight:400;line-height:1.15;
+    margin:16px 0 28px;
+  }
+  .about p{color:var(--muted);margin-bottom:20px;font-size:16px;line-height:1.75}
+  .about-quote{
+    font-family:'Playfair Display',serif;
+    font-style:italic;font-size:20px;
+    color:var(--navy);
+    border-left:3px solid var(--gold);
+    padding:8px 0 8px 24px;margin-top:32px;
+  }
+  .about-signature{
+    margin-top:12px;font-size:13px;
+    letter-spacing:0.15em;color:var(--gold);
+    text-transform:uppercase;font-weight:500;
+  }
+
+  /* PROCESO */
+  .process-list{counter-reset:step}
+  .process-item{
+    display:grid;grid-template-columns:140px 1fr 1fr;gap:40px;
+    padding:48px 0;
+    border-bottom:1px solid rgba(245,239,227,0.15);
+    align-items:start;
+  }
+  .process-item:last-child{border-bottom:none}
+  .process-num{
+    font-family:'Playfair Display',serif;
+    font-size:64px;color:var(--gold-light);
+    font-style:italic;line-height:1;
+  }
+  .process-item h3{
+    font-family:'Playfair Display',serif;
+    font-size:26px;color:var(--cream);font-weight:500;
+    margin-bottom:8px;
+  }
+  .process-item .day{
+    font-size:11px;letter-spacing:0.25em;
+    color:var(--gold-light);text-transform:uppercase;
+    margin-bottom:12px;
+  }
+  .process-item p{
+    color:rgba(245,239,227,0.75);
+    font-size:15px;line-height:1.65;
+  }
+
+  /* FAQ */
+  .faq-list{max-width:820px}
+  .faq-item{
+    border-bottom:1px solid var(--line);
+    padding:28px 0;
+  }
+  .faq-item h4{
+    font-family:'Playfair Display',serif;
+    font-size:20px;color:var(--navy);font-weight:500;
+    margin-bottom:10px;
+  }
+  .faq-item p{color:var(--muted);font-size:15px;line-height:1.7}
+
+  /* CONTACT FINAL */
+  .contact{
+    background:var(--navy-deep);color:var(--cream);
+    text-align:center;
+  }
+  .contact h2{
+    font-family:'Playfair Display',serif;
+    font-size:clamp(2.5rem,5vw,4rem);
+    color:var(--cream);font-weight:400;
+    margin:16px 0 24px;line-height:1.1;
+  }
+  .contact h2 em{color:var(--gold-light);font-style:italic}
+  .contact p{color:rgba(245,239,227,0.75);font-size:18px;max-width:560px;margin:0 auto 44px}
+
+  /* FOOTER */
+  footer{
+    background:var(--navy-deep);color:rgba(245,239,227,0.6);
+    padding:40px 0;border-top:1px solid rgba(245,239,227,0.1);
+    font-size:13px;text-align:center;
+  }
+  footer .gold{color:var(--gold-light)}
+
+  /* WHATSAPP */
+  .wa{
+    position:fixed;bottom:32px;right:32px;
+    width:60px;height:60px;border-radius:50%;
+    background:var(--gold);
+    display:flex;align-items:center;justify-content:center;
+    cursor:pointer;text-decoration:none;
+    box-shadow:0 8px 30px rgba(184,150,74,0.4);
+    z-index:200;transition:transform .3s;
+  }
+  .wa:hover{transform:scale(1.08)}
+  .wa svg{width:30px;height:30px;fill:var(--navy-deep)}
+
+  .annotation{
+    position:fixed;top:90px;left:32px;
+    background:var(--navy);color:var(--cream);
+    padding:14px 18px;border-radius:2px;
+    font-size:12px;max-width:240px;z-index:99;
+    border-left:3px solid var(--gold);
+  }
+  .annotation strong{color:var(--gold-light);display:block;margin-bottom:4px;letter-spacing:0.15em;font-size:10px;font-weight:500}
+
+  @media (max-width:820px){
+    .hero-grid,.about-grid,.prices-grid{grid-template-columns:1fr;gap:40px}
+    .diff-grid{grid-template-columns:1fr}
+    .diff-card{border-right:none;border-bottom:1px solid var(--line)}
+    .process-item{grid-template-columns:1fr}
+    nav a:not(.nav-cta){display:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="annotation">
+  <strong>OPCIÓN A</strong>
+  Editorial Premium · estilo revista de lujo · crema + marino + oro
+</div>
+
+<header>
+  <div class="logo">Layevska<em>.</em></div>
+  <nav>
+    <a href="#servicios">Servicios</a>
+    <a href="#precios">Precios</a>
+    <a href="#proceso">Proceso</a>
+    <a href="#sobre">Sobre</a>
+    <a href="#contacto" class="nav-cta">Cotizar</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <p class="eyebrow">Estudio de diseño · Costa Rica</p>
+        <h1>Landing pages que <em>convierten</em> visitantes en clientes.</h1>
+        <p class="hero-sub">Diseño artesanal, ingeniería serverless en AWS y entrega en menos de una semana. Para PYMEs que merecen verse al nivel de marcas mucho más grandes.</p>
+        <div class="hero-ctas">
+          <a href="#contacto" class="btn btn-primary">Solicitar cotización</a>
+          <a href="#precios" class="btn btn-outline">Ver precios</a>
+        </div>
+      </div>
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <div class="hero-meta-label">Desde</div>
+          <div class="hero-meta-value">$875 USD</div>
+          <div class="hero-meta-detail">Hosting y dominio incluidos</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="hero-meta-label">Entrega</div>
+          <div class="hero-meta-value">3 a 7 días</div>
+          <div class="hero-meta-detail">Después de aprobar la vista previa</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="hero-meta-label">Infraestructura</div>
+          <div class="hero-meta-value">AWS</div>
+          <div class="hero-meta-detail">Serverless · CDN global · SSL automático</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIFERENCIADORES -->
+<section id="servicios">
+  <div class="container">
+    <p class="eyebrow">Por qué Layevska</p>
+    <h2 class="section-title">Tres razones por las que dejamos de parecernos a la competencia.</h2>
+    <div class="diff-grid">
+      <div class="diff-card">
+        <div class="diff-num">01</div>
+        <h3>Diseño a la medida</h3>
+        <p>Sin plantillas. Cada landing nace de un brief estratégico de 12 preguntas que define tu cliente ideal, tu propuesta de valor y tus objeciones más frecuentes.</p>
+      </div>
+      <div class="diff-card">
+        <div class="diff-num">02</div>
+        <h3>Infraestructura AWS</h3>
+        <p>Arquitectura serverless sin base de datos que vulnerar. Sin WordPress, sin plugins desactualizados. Distribución por CDN global y SSL automático desde el día uno.</p>
+      </div>
+      <div class="diff-card">
+        <div class="diff-num">03</div>
+        <h3>Mantenimiento incluido</h3>
+        <p>Cuota mensual fija de $120 que cubre hosting, dominio, backups, monitoreo, soporte WhatsApp y hasta 2 actualizaciones de contenido al mes. Sin sorpresas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRECIOS -->
+<section id="precios" class="section-cream-warm">
+  <div class="container">
+    <p class="eyebrow">Modelos y precios</p>
+    <h2 class="section-title">Dos modelos. Inversión transparente.</h2>
+    <div class="prices-grid">
+      <div class="price-card">
+        <div class="price-label">Modelo Estándar</div>
+        <h3>Landing page sin animaciones</h3>
+        <div class="price-amount">$875</div>
+        <div class="price-meta">USD pago único · Entrega 3-5 días · $120/mes desde el mes 2</div>
+        <div class="price-feature">Brief estratégico personalizado</div>
+        <div class="price-feature">Copywriting AIDA/PAS calibrado</div>
+        <div class="price-feature">Diseño UI/UX premium a la medida</div>
+        <div class="price-feature">Hosting AWS y dominio (primer año)</div>
+        <div class="price-feature">SSL + CDN global + Integración WhatsApp</div>
+        <div class="price-feature">SEO local básico</div>
+        <a href="#contacto" class="btn btn-outline">Elegir Estándar</a>
+      </div>
+      <div class="price-card featured">
+        <div class="price-badge">Recomendado</div>
+        <div class="price-label">Modelo Premium</div>
+        <h3>Landing page con animaciones</h3>
+        <div class="price-amount">$1,000</div>
+        <div class="price-meta">USD pago único · Entrega 5-7 días · $120/mes desde el mes 2</div>
+        <div class="price-feature">Todo lo del Modelo Estándar</div>
+        <div class="price-feature">Animaciones cinematográficas</div>
+        <div class="price-feature">Micro-interacciones de scroll</div>
+        <div class="price-feature">Transiciones suaves entre secciones</div>
+        <div class="price-feature">Optimización avanzada de carga</div>
+        <div class="price-feature">Ideal para marcas de alto ticket</div>
+        <a href="#contacto" class="btn btn-outline">Elegir Premium</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre" class="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-image">
+        <span class="about-image-label">Estudio · San José, Costa Rica</span>
+      </div>
+      <div>
+        <p class="eyebrow">Sobre Layevska Web Design</p>
+        <h2>Un estudio pequeño, deliberadamente lento en el detalle.</h2>
+        <p>Layevska Web Design nace de una idea simple: las PYMEs costarricenses merecen presencia digital al nivel de marcas mucho más grandes. Por eso operamos como un taller artesanal, no como una agencia de producción masiva.</p>
+        <p>Cada landing page que entregamos pasa por las mismas manos de principio a fin: brief estratégico, copy, diseño, ingeniería AWS y publicación. Sin terceros, sin departamentos, sin diluciones.</p>
+        <div class="about-quote">"No queremos hacer cien páginas iguales. Queremos hacer la tuya."</div>
+        <div class="about-signature">— Equipo Layevska</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESO -->
+<section id="proceso" class="section-navy">
+  <div class="container">
+    <p class="eyebrow">Cómo trabajamos</p>
+    <h2 class="section-title">De la primera conversación a tu landing publicada.</h2>
+    <div class="process-list">
+      <div class="process-item">
+        <div class="process-num">01</div>
+        <div>
+          <div class="day">Día 0</div>
+          <h3>Primer contacto</h3>
+        </div>
+        <p>Nos escribes por WhatsApp expresando interés. Respondemos en menos de 24 horas con una llamada breve de 15 minutos para entender tu negocio, tus objetivos y tu mercado.</p>
+      </div>
+      <div class="process-item">
+        <div class="process-num">02</div>
+        <div>
+          <div class="day">Día 1</div>
+          <h3>Brief estratégico</h3>
+        </div>
+        <p>Te enviamos un formulario de onboarding con 12 preguntas. Este documento define el tono de comunicación, el cliente ideal y los diferenciadores que vamos a destacar.</p>
+      </div>
+      <div class="process-item">
+        <div class="process-num">03</div>
+        <div>
+          <div class="day">Día 3 a 5</div>
+          <h3>Vista previa funcional</h3>
+        </div>
+        <p>Entregamos una landing real, con tu copy y tus imágenes propuestas. No es una maqueta: es la página completa en un enlace privado de staging para tu revisión.</p>
+      </div>
+      <div class="process-item">
+        <div class="process-num">04</div>
+        <div>
+          <div class="day">Día 5 a 6</div>
+          <h3>Aprobación y pago</h3>
+        </div>
+        <p>Si apruebas la vista previa, procesas el pago único ($875 o $1,000) por Sinpe Móvil, transferencia bancaria o PayPal. Sin pago no hay publicación.</p>
+      </div>
+      <div class="process-item">
+        <div class="process-num">05</div>
+        <div>
+          <div class="day">Día 6 a 7</div>
+          <h3>Lanzamiento</h3>
+        </div>
+        <p>Registramos tu dominio, activamos el SSL, configuramos Google Analytics y publicamos. Tu landing queda abierta 24/7 con uptime garantizado del 99.9%.</p>
+      </div>
+      <div class="process-item">
+        <div class="process-num">06</div>
+        <div>
+          <div class="day">Mes 2 en adelante</div>
+          <h3>Mantenimiento</h3>
+        </div>
+        <p>Comienza la cuota fija de $120 USD/mes que cubre hosting AWS, renovación de dominio, backups diarios, monitoreo, parches de seguridad y hasta 2 actualizaciones mensuales.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section>
+  <div class="container">
+    <p class="eyebrow">Preguntas frecuentes</p>
+    <h2 class="section-title">Lo que normalmente nos preguntan.</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <h4>¿Tengo que pagar antes de ver mi landing?</h4>
+        <p>No. Entregamos primero una vista previa funcional con tu copy real y tus imágenes propuestas. Solo se paga si apruebas el resultado.</p>
+      </div>
+      <div class="faq-item">
+        <h4>¿Qué pasa si quiero cambiar algo después del lanzamiento?</h4>
+        <p>La cuota mensual incluye hasta 2 actualizaciones menores al mes. Para rediseños mayores cotizamos aparte de forma transparente.</p>
+      </div>
+      <div class="faq-item">
+        <h4>¿El dominio queda a mi nombre?</h4>
+        <p>Sí. Layevska lo registra y administra, pero el dominio queda legalmente a nombre del negocio del cliente.</p>
+      </div>
+      <div class="faq-item">
+        <h4>¿Por qué no usan WordPress?</h4>
+        <p>Porque el 94% de los hackeos a sitios pequeños explotan vulnerabilidades de WordPress y sus plugins. Trabajamos con arquitectura serverless: sin base de datos, sin admin, sin superficie de ataque.</p>
+      </div>
+      <div class="faq-item">
+        <h4>¿Funciona si mi público está fuera de Costa Rica?</h4>
+        <p>Sí. La arquitectura AWS distribuye el sitio globalmente y el copywriting puede adaptarse a cualquier mercado hispanohablante.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT FINAL -->
+<section id="contacto" class="contact">
+  <div class="container">
+    <p class="eyebrow" style="color:var(--gold-light)">Hablemos</p>
+    <h2>¿Listo para <em>cotizar</em> tu landing page?</h2>
+    <p>Respondemos en menos de 24 horas hábiles. Sin formularios eternos. Sin cotizaciones de tres páginas. Una conversación directa y una decisión informada.</p>
+    <div class="hero-ctas" style="justify-content:center">
+      <a href="https://wa.me/50687518441?text=Hola,%20vi%20su%20p%C3%A1gina%20web%20y%20me%20interesa%20obtener%20informaci%C3%B3n%20sobre%20sus%20servicios." target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="background:var(--gold);color:var(--navy-deep)">Escribir por WhatsApp</a>
+      <a href="#" class="btn btn-outline" style="color:var(--cream);border-color:var(--cream)">Solicitar cotización</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    Layevska Web Design · <span class="gold">+506 8751-8441</span> · San José, Costa Rica · 2026
+  </div>
+</footer>
+
+<a href="https://wa.me/50687518441?text=Hola,%20vi%20su%20p%C3%A1gina%20web%20y%20me%20interesa%20obtener%20informaci%C3%B3n%20sobre%20sus%20servicios." target="_blank" rel="noopener noreferrer" class="wa" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413"/></svg>
+</a>
+
+</body>
+</html>

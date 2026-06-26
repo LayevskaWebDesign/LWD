@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Layevska Web Design · Mockup Visual</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,500;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --midnight:#0A0708;
+    --velvet:#1F0D14;
+    --smoke:#1A1517;
+    --ivory:#F4ECDB;
+    --antique:#A9A09A;
+    --gold:#C9A961;
+    --gold-glow:#E8C77E;
+    --plum:#5B2B47;
+    --ember:#A93226;
+    --patina:#3A2D1F;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--midnight);
+    color:var(--ivory);
+    font-family:'Inter',sans-serif;
+    font-weight:400;
+    line-height:1.7;
+    overflow-x:hidden;
+  }
+  h1,h2,h3{font-weight:400;line-height:1.15}
+  .display{font-family:'Cinzel',serif;letter-spacing:0.02em}
+  .editorial{font-family:'Cormorant Garamond',serif;font-weight:300;letter-spacing:0.01em}
+  .eyebrow{
+    font-family:'Cinzel',serif;
+    font-size:11px;
+    letter-spacing:0.35em;
+    color:var(--gold);
+    text-transform:uppercase;
+    font-weight:500;
+  }
+  .container{max-width:1180px;margin:0 auto;padding:0 32px}
+  .section{padding:120px 0;position:relative}
+
+  /* HEADER */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    background:rgba(10,7,8,0.7);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid rgba(201,169,97,0.12);
+    padding:18px 32px;
+    display:flex;justify-content:space-between;align-items:center;
+  }
+  .logo{font-family:'Cinzel',serif;font-size:18px;letter-spacing:0.25em;color:var(--ivory)}
+  .logo span{color:var(--gold)}
+  nav a{
+    color:var(--antique);text-decoration:none;
+    margin-left:32px;font-size:13px;letter-spacing:0.1em;
+    text-transform:uppercase;font-weight:500;
+    transition:color .3s;
+  }
+  nav a:hover{color:var(--gold-glow)}
+
+  /* HERO */
+  .hero{
+    min-height:100vh;
+    display:flex;align-items:center;justify-content:center;
+    text-align:center;
+    background:radial-gradient(ellipse at 50% 30%, rgba(91,43,71,0.35) 0%, transparent 55%), var(--midnight);
+    position:relative;overflow:hidden;
+    padding:140px 32px 80px;
+  }
+  .hero::before{
+    content:"";position:absolute;inset:0;
+    background-image:
+      radial-gradient(2px 2px at 20% 30%, rgba(232,199,126,0.6), transparent),
+      radial-gradient(1px 1px at 60% 70%, rgba(232,199,126,0.5), transparent),
+      radial-gradient(1.5px 1.5px at 80% 40%, rgba(232,199,126,0.7), transparent),
+      radial-gradient(1px 1px at 35% 80%, rgba(232,199,126,0.4), transparent),
+      radial-gradient(1px 1px at 90% 15%, rgba(232,199,126,0.6), transparent);
+    animation:float 12s infinite ease-in-out;
+    pointer-events:none;
+  }
+  @keyframes float{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-20px)}
+  }
+  .hero-content{position:relative;z-index:2;max-width:920px}
+  .hero h1{
+    font-family:'Cinzel',serif;
+    font-size:clamp(2.5rem, 6vw, 5.5rem);
+    line-height:1.1;
+    margin:24px 0 28px;
+    background:linear-gradient(180deg, var(--ivory) 30%, var(--gold-glow) 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    text-shadow:0 0 60px rgba(232,199,126,0.15);
+  }
+  .hero .sub{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;font-weight:300;
+    font-size:clamp(1.1rem,2vw,1.5rem);
+    color:var(--antique);
+    max-width:680px;margin:0 auto 44px;
+  }
+  .ctas{display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:18px 38px;border-radius:2px;
+    font-family:'Cinzel',serif;font-size:13px;
+    letter-spacing:0.2em;text-transform:uppercase;font-weight:500;
+    text-decoration:none;cursor:pointer;border:1px solid transparent;
+    transition:all .4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .btn-primary{
+    background:linear-gradient(180deg,var(--gold) 0%,var(--gold-glow) 50%,var(--gold) 100%);
+    color:var(--midnight);
+    box-shadow:0 0 0 1px var(--patina), 0 20px 50px -20px rgba(201,169,97,0.6);
+  }
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 0 0 1px var(--gold), 0 25px 60px -20px rgba(232,199,126,0.8)}
+  .btn-outline{
+    background:transparent;color:var(--ivory);
+    border-color:rgba(244,236,219,0.35);
+  }
+  .btn-outline:hover{border-color:var(--gold-glow);color:var(--gold-glow)}
+  .microcopy{
+    margin-top:32px;font-size:13px;color:var(--antique);
+    letter-spacing:0.08em;
+  }
+  .microcopy span{color:var(--gold)}
+
+  /* MANIFESTO */
+  .manifesto{
+    background:var(--midnight);
+    border-top:1px solid rgba(201,169,97,0.1);
+    border-bottom:1px solid rgba(201,169,97,0.1);
+  }
+  .manifesto p{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(1.5rem, 3vw, 2.4rem);
+    font-weight:300;line-height:1.4;
+    color:var(--ivory);
+    max-width:900px;
+  }
+  .manifesto p strong{
+    color:var(--gold-glow);font-weight:500;
+    font-style:italic;
+  }
+  .manifesto .ornament{
+    width:60px;height:1px;background:var(--gold);
+    margin-bottom:32px;
+  }
+
+  /* PAIN POINTS */
+  .pain{background:var(--velvet);position:relative}
+  .pain h2{
+    font-family:'Cormorant Garamond',serif;
+    font-weight:500;font-style:italic;
+    font-size:clamp(2rem,4vw,3rem);
+    color:var(--ivory);
+    max-width:780px;margin:16px 0 80px;
+  }
+  .pain-grid{display:flex;flex-direction:column;gap:80px}
+  .pain-card{
+    display:grid;grid-template-columns:1fr 1fr;gap:60px;
+    align-items:center;
+  }
+  .pain-card:nth-child(even){direction:rtl}
+  .pain-card:nth-child(even) > *{direction:ltr}
+  .pain-visual{
+    aspect-ratio:1;
+    background:radial-gradient(circle at center, var(--plum) 0%, var(--smoke) 70%);
+    border:1px solid var(--patina);
+    border-radius:4px;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Cinzel',serif;
+    font-size:120px;color:var(--gold);
+    position:relative;overflow:hidden;
+  }
+  .pain-visual::after{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(circle at 30% 30%, rgba(232,199,126,0.1), transparent 60%);
+  }
+  .pain-number{
+    font-family:'Cinzel',serif;color:var(--gold);
+    font-size:14px;letter-spacing:0.3em;margin-bottom:16px;
+  }
+  .pain-card h3{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;font-weight:500;
+    font-size:2rem;color:var(--ivory);
+    margin-bottom:20px;
+  }
+  .pain-card p{color:var(--antique);font-size:16px}
+
+  /* TWO KEYS */
+  .keys{background:var(--midnight)}
+  .keys-header{text-align:center;margin-bottom:80px}
+  .keys-header h2{
+    font-family:'Cormorant Garamond',serif;
+    font-weight:500;font-style:italic;
+    font-size:clamp(2rem,4vw,3rem);
+    color:var(--ivory);
+    margin:16px 0 16px;
+  }
+  .keys-header p{color:var(--antique);font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-style:italic;max-width:600px;margin:0 auto}
+  .keys-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+  .key-card{
+    background:linear-gradient(180deg, var(--smoke) 0%, var(--velvet) 100%);
+    border:1px solid var(--patina);
+    padding:48px 40px;border-radius:4px;
+    position:relative;overflow:hidden;
+    transition:transform .5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .key-card:hover{transform:translateY(-8px);border-color:var(--gold)}
+  .key-card.premium{
+    border-color:var(--gold);
+    background:linear-gradient(180deg, rgba(201,169,97,0.08) 0%, var(--velvet) 100%);
+  }
+  .key-card.premium::before{
+    content:"RECOMENDADO";
+    position:absolute;top:24px;right:-44px;
+    background:var(--gold);color:var(--midnight);
+    padding:6px 50px;
+    font-family:'Cinzel',serif;font-size:10px;
+    letter-spacing:0.25em;font-weight:600;
+    transform:rotate(45deg);
+  }
+  .key-name{
+    font-family:'Cinzel',serif;font-size:14px;
+    letter-spacing:0.3em;color:var(--gold);
+    margin-bottom:12px;
+  }
+  .key-card h3{
+    font-family:'Cormorant Garamond',serif;
+    font-weight:500;font-size:2.2rem;
+    color:var(--ivory);margin-bottom:24px;
+  }
+  .key-price{
+    font-family:'Cinzel',serif;
+    font-size:3rem;color:var(--gold-glow);
+    margin-bottom:8px;line-height:1;
+  }
+  .key-monthly{
+    color:var(--antique);font-size:14px;
+    margin-bottom:32px;
+  }
+  .key-feature{
+    display:flex;align-items:flex-start;gap:12px;
+    padding:12px 0;
+    border-bottom:1px solid rgba(201,169,97,0.08);
+    font-size:14px;color:var(--ivory);
+  }
+  .key-feature::before{
+    content:"◆";color:var(--gold);
+    font-size:8px;margin-top:6px;
+  }
+  .key-card .btn{
+    margin-top:32px;width:100%;justify-content:center;
+  }
+
+  /* PROCESS */
+  .process{
+    background:var(--velvet);
+    background-image:
+      linear-gradient(180deg, var(--velvet) 0%, var(--midnight) 100%);
+  }
+  .process h2{
+    font-family:'Cormorant Garamond',serif;
+    font-weight:500;font-style:italic;
+    font-size:clamp(2rem,4vw,3rem);
+    color:var(--ivory);
+    margin:16px 0 60px;
+    text-align:center;
+  }
+  .timeline{
+    max-width:780px;margin:0 auto;
+    position:relative;
+  }
+  .timeline::before{
+    content:"";position:absolute;left:50px;top:0;bottom:0;
+    width:1px;
+    background:linear-gradient(180deg, transparent 0%, var(--gold) 10%, var(--gold) 90%, transparent 100%);
+  }
+  .step{
+    display:flex;gap:32px;padding:32px 0;
+    align-items:flex-start;position:relative;
+  }
+  .step-marker{
+    width:100px;height:100px;flex-shrink:0;
+    background:var(--midnight);
+    border:1px solid var(--gold);
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Cinzel',serif;color:var(--gold);
+    font-size:18px;letter-spacing:0.1em;
+    position:relative;z-index:2;
+  }
+  .step-content{padding-top:12px}
+  .step-content h3{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;font-weight:500;
+    color:var(--ivory);font-size:1.5rem;
+    margin-bottom:8px;
+  }
+  .step-content p{color:var(--antique);font-size:15px}
+
+  /* TESTIMONIALS */
+  .testimonials{background:var(--midnight)}
+  .testimonials h2{
+    font-family:'Cormorant Garamond',serif;
+    font-weight:500;font-style:italic;
+    font-size:clamp(2rem,4vw,3rem);
+    color:var(--ivory);
+    text-align:center;margin:16px 0 60px;
+  }
+  .testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .testimonial{
+    background:var(--smoke);
+    border:1px solid var(--patina);
+    padding:32px;border-radius:4px;
+    position:relative;
+  }
+  .testimonial::before{
+    content:"\201C";
+    position:absolute;top:-10px;left:24px;
+    font-family:'Cormorant Garamond',serif;
+    font-size:80px;color:var(--gold);
+    line-height:1;
+  }
+  .stars{color:var(--gold-glow);font-size:14px;letter-spacing:4px;margin-bottom:16px}
+  .testimonial p{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    color:var(--ivory);font-size:15px;
+    margin-bottom:24px;line-height:1.6;
+  }
+  .testimonial-author{
+    font-family:'Cinzel',serif;font-size:12px;
+    color:var(--gold);letter-spacing:0.15em;
+  }
+  .testimonial-author span{
+    display:block;color:var(--antique);
+    font-family:'Inter',sans-serif;
+    font-size:11px;letter-spacing:0.05em;
+    margin-top:4px;text-transform:none;
+  }
+
+  /* FINAL CTA */
+  .final{
+    background:radial-gradient(ellipse at center, var(--plum) 0%, var(--midnight) 70%);
+    text-align:center;
+  }
+  .final h2{
+    font-family:'Cinzel',serif;
+    font-size:clamp(2.5rem,5vw,4.5rem);
+    color:var(--ivory);
+    margin-bottom:24px;line-height:1.1;
+    background:linear-gradient(180deg, var(--ivory) 30%, var(--gold-glow) 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .final p{
+    font-family:'Cormorant Garamond',serif;font-style:italic;
+    color:var(--antique);font-size:1.3rem;
+    max-width:580px;margin:0 auto 44px;
+  }
+
+  /* FOOTER */
+  footer{
+    background:var(--midnight);
+    border-top:1px solid var(--patina);
+    padding:40px 32px;
+    text-align:center;
+    color:var(--antique);font-size:13px;
+    letter-spacing:0.05em;
+  }
+  footer span{color:var(--gold)}
+
+  /* WHATSAPP FLOATING */
+  .whatsapp{
+    position:fixed;bottom:32px;right:32px;
+    width:64px;height:64px;border-radius:50%;
+    background:linear-gradient(180deg,var(--gold) 0%,var(--gold-glow) 100%);
+    display:flex;align-items:center;justify-content:center;
+    cursor:pointer;
+    box-shadow:0 0 0 0 rgba(232,199,126,0.5);
+    animation:pulse 2.5s infinite;
+    text-decoration:none;
+    z-index:200;
+  }
+  .whatsapp svg{width:32px;height:32px;fill:var(--midnight)}
+  @keyframes pulse{
+    0%{box-shadow:0 0 0 0 rgba(232,199,126,0.5)}
+    70%{box-shadow:0 0 0 25px rgba(232,199,126,0)}
+    100%{box-shadow:0 0 0 0 rgba(232,199,126,0)}
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 820px){
+    .pain-card,.keys-grid,.testimonials-grid{grid-template-columns:1fr;gap:32px}
+    .timeline::before{left:30px}
+    .step-marker{width:60px;height:60px;font-size:13px}
+    nav{display:none}
+  }
+
+  /* Annotations badge for the mockup */
+  .annotation{
+    position:fixed;top:90px;left:32px;
+    background:rgba(10,7,8,0.85);
+    backdrop-filter:blur(10px);
+    border:1px solid var(--gold);
+    color:var(--ivory);
+    padding:14px 18px;border-radius:4px;
+    font-size:12px;letter-spacing:0.05em;
+    max-width:260px;z-index:99;
+    font-family:'Inter',sans-serif;
+  }
+  .annotation strong{color:var(--gold);display:block;margin-bottom:4px;letter-spacing:0.15em;font-family:'Cinzel',serif;font-size:10px}
+</style>
+</head>
+<body>
+
+<div class="annotation">
+  <strong>MOCKUP DE REFERENCIA</strong>
+  Esta es una vista previa estática de la dirección visual. La versión React tendrá animaciones reales con Framer Motion y GSAP. Hacé scroll para ver todos los actos.
+</div>
+
+<header>
+  <div class="logo">LAYEVSKA<span> · </span>WD</div>
+  <nav>
+    <a href="#manifiesto">Manifiesto</a>
+    <a href="#modelos">Modelos</a>
+    <a href="#proceso">Proceso</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+</header>
+
+<!-- ACTO 1: HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <p class="eyebrow">Estudio Artesanal · Costa Rica · Desde 2026</p>
+    <h1>Landing pages forjadas para gente que ya está cansada de parecerse a todos los demás.</h1>
+    <p class="sub">Diseño cinematográfico, ingeniería serverless en AWS y una sola misión: que tu próxima visita se convierta en cliente antes de cerrar la pestaña.</p>
+    <div class="ctas">
+      <a href="#contacto" class="btn btn-primary">Forjar mi landing page</a>
+      <a href="#modelos" class="btn btn-outline">Conocer los dos modelos</a>
+    </div>
+    <p class="microcopy">Entrega en <span>3 a 7 días</span> · Hosting y dominio incluidos · Sin contratos eternos.</p>
+  </div>
+</section>
+
+<!-- ACTO 2: MANIFIESTO -->
+<section class="section manifesto" id="manifiesto">
+  <div class="container">
+    <div class="ornament"></div>
+    <p class="editorial">
+      Internet está lleno de plantillas que ya viste mil veces.<br/><br/>
+      Páginas hechas con prisa, vendidas con guion y olvidadas el mismo día que se publican.<br/><br/>
+      <strong>Layevska Web Design existe para lo contrario.</strong><br/><br/>
+      Construimos landing pages como quien forja una llave a la medida: lentas en el detalle, rápidas en la entrega, hechas para abrir una puerta muy específica — la de tu próximo cliente.
+    </p>
+  </div>
+</section>
+
+<!-- ACTO 3: DOLORES -->
+<section class="section pain">
+  <div class="container">
+    <p class="eyebrow">Lo que normalmente te pasa</p>
+    <h2 class="editorial">Hay tres criaturas que se comen tus clientes antes de que lleguen.</h2>
+
+    <div class="pain-grid">
+      <div class="pain-card">
+        <div class="pain-visual">I</div>
+        <div>
+          <p class="pain-number">DOLOR PRIMERO</p>
+          <h3>La Página Fantasma</h3>
+          <p>Tienes un sitio, sí. Pero nadie lo recuerda. Carga lento, parece de 2014 y cuando alguien lo visita desde el celular las letras se rompen. La gente entra, mira un segundo y se va. No hay segunda oportunidad.</p>
+        </div>
+      </div>
+
+      <div class="pain-card">
+        <div class="pain-visual">II</div>
+        <div>
+          <p class="pain-number">DOLOR SEGUNDO</p>
+          <h3>El Freelancer que Desapareció</h3>
+          <p>Pagaste $300 hace un año. Te entregaron una plantilla recoloreada de Wix. Ahora necesitas cambiar un teléfono y no encuentras al freelancer. El sitio sigue ahí, intocable, congelado en el tiempo, mientras tu negocio cambia.</p>
+        </div>
+      </div>
+
+      <div class="pain-card">
+        <div class="pain-visual">III</div>
+        <div>
+          <p class="pain-number">DOLOR TERCERO</p>
+          <h3>El Hackeo Silencioso</h3>
+          <p>Una mañana entras a tu propio sitio y aparece publicidad china, redirecciones extrañas, advertencias rojas de Google. Tu hosting compartido fue vulnerado. Recuperar la reputación en buscadores cuesta entre 3 y 6 semanas. La inversión en pauta se evaporó.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACTO 5: DOS LLAVES -->
+<section class="section keys" id="modelos">
+  <div class="container">
+    <div class="keys-header">
+      <p class="eyebrow">Elige tu llave</p>
+      <h2 class="editorial">Dos modelos. Una misma artesanía.</h2>
+      <p>Ambas llaves abren la misma puerta: la de tu próximo cliente. La diferencia está en cómo se siente girar la cerradura.</p>
+    </div>
+
+    <div class="keys-grid">
+      <div class="key-card">
+        <p class="key-name">LLAVE DE BRONCE</p>
+        <h3>Modelo Estándar</h3>
+        <div class="key-price">$875</div>
+        <p class="key-monthly">USD pago único · $120/mes desde el mes 2 · Entrega 3-5 días</p>
+        <div class="key-feature">Brief estratégico de 12 preguntas</div>
+        <div class="key-feature">Copywriting AIDA/PAS personalizado</div>
+        <div class="key-feature">Diseño UI/UX a la medida</div>
+        <div class="key-feature">Hosting AWS y dominio (primer año)</div>
+        <div class="key-feature">SSL global · Integración WhatsApp</div>
+        <div class="key-feature">SEO local básico</div>
+        <a href="#contacto" class="btn btn-outline">Elegir Bronce</a>
+      </div>
+
+      <div class="key-card premium">
+        <p class="key-name">LLAVE DE ORO</p>
+        <h3>Modelo Premium</h3>
+        <div class="key-price">$1,000</div>
+        <p class="key-monthly">USD pago único · $120/mes desde el mes 2 · Entrega 5-7 días</p>
+        <div class="key-feature">Todo lo del Modelo Estándar</div>
+        <div class="key-feature">Animaciones cinematográficas Framer Motion</div>
+        <div class="key-feature">Micro-interacciones de scroll</div>
+        <div class="key-feature">Transiciones suaves entre secciones</div>
+        <div class="key-feature">Carga progresiva premium</div>
+        <div class="key-feature">Para marcas de alto ticket</div>
+        <a href="#contacto" class="btn btn-primary">Elegir Oro</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACTO 6: PROCESO -->
+<section class="section process" id="proceso">
+  <div class="container">
+    <p class="eyebrow" style="text-align:center">El viaje</p>
+    <h2 class="editorial">De la primera conversación a tu landing publicada en 7 días.</h2>
+
+    <div class="timeline">
+      <div class="step">
+        <div class="step-marker">Día 0</div>
+        <div class="step-content">
+          <h3>El Primer Susurro</h3>
+          <p>Nos escribes por WhatsApp. Respondemos en menos de 24 horas con una llamada de 15 minutos para entender tu negocio.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-marker">Día 1</div>
+        <div class="step-content">
+          <h3>El Pergamino</h3>
+          <p>Te enviamos un formulario de 12 preguntas estratégicas. Esto define el tono, el cliente ideal y el estilo visual.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-marker">Día 3-5</div>
+        <div class="step-content">
+          <h3>La Vista Previa</h3>
+          <p>Te entregamos una landing funcional, con tu copy real y tus imágenes propuestas. No es una maqueta — es la página real, en un enlace privado.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-marker">Día 5-6</div>
+        <div class="step-content">
+          <h3>El Pacto</h3>
+          <p>Si apruebas, procesas el pago único ($875 o $1,000) por Sinpe Móvil, transferencia o PayPal.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-marker">Día 6-7</div>
+        <div class="step-content">
+          <h3>El Lanzamiento</h3>
+          <p>Registramos tu dominio, activamos SSL, conectamos Analytics y publicamos. Tu landing abre sus puertas al mundo.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-marker">Mes 2+</div>
+        <div class="step-content">
+          <h3>La Custodia</h3>
+          <p>Comienza la cuota fija de $120/mes que cubre hosting, dominio, monitoreo, backups, soporte WhatsApp y actualizaciones.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACTO 9: TESTIMONIOS -->
+<section class="section testimonials">
+  <div class="container">
+    <p class="eyebrow" style="text-align:center">Lo que dicen</p>
+    <h2 class="editorial">Negocios que ya pasaron por el taller.</h2>
+
+    <div class="testimonials-grid">
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p>En tres días pasé de tener una página fea de Wix a una landing que mis pacientes mencionan en las consultas. La diferencia se nota incluso en el tipo de cliente que ahora llega.</p>
+        <p class="testimonial-author">DRA. [PLACEHOLDER]<span>Clínica dental · Vía WhatsApp</span></p>
+      </div>
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p>Lo que más valoro es que después del lanzamiento no me sentí abandonada. Cada vez que necesito un cambio escribo por WhatsApp y al día siguiente está hecho.</p>
+        <p class="testimonial-author">[PLACEHOLDER]<span>Consultora financiera · Vía Google Reviews</span></p>
+      </div>
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p>Me cotizaron tres agencias antes. Layevska era la única que me explicó por qué cobraba lo que cobraba, sin venderme paquetes mensuales eternos. Total claridad.</p>
+        <p class="testimonial-author">[PLACEHOLDER]<span>Bufete legal · Vía LinkedIn</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACTO 12: FINAL CTA -->
+<section class="section final" id="contacto">
+  <div class="container">
+    <p class="eyebrow">Última puerta</p>
+    <h2>¿Listo para forjar tu llave?</h2>
+    <p>Te respondemos en menos de 24 horas hábiles. Sin formularios eternos, sin cotizaciones de tres páginas. Un mensaje, una conversación, una decisión.</p>
+    <div class="ctas">
+      <a href="https://wa.me/50687518441?text=Hola,%20vi%20su%20p%C3%A1gina%20web%20y%20me%20interesa%20obtener%20informaci%C3%B3n%20sobre%20sus%20servicios." target="_blank" rel="noopener noreferrer" class="btn btn-primary">Escribir por WhatsApp</a>
+      <a href="#" class="btn btn-outline">Solicitar cotización</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Layevska Web Design · <span>+506 8751-8441</span> · Costa Rica · 2026<br/>
+  <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:11px">Diseño que se siente como un secreto bien guardado.</span>
+</footer>
+
+<a href="https://wa.me/50687518441?text=Hola,%20vi%20su%20p%C3%A1gina%20web%20y%20me%20interesa%20obtener%20informaci%C3%B3n%20sobre%20sus%20servicios." target="_blank" rel="noopener noreferrer" class="whatsapp" aria-label="Contactar por WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413"/></svg>
+</a>
+
+</body>
+</html>

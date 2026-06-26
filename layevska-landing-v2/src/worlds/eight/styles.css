@@ -1,0 +1,101 @@
+.world-eight {
+  --w8-sunset: #D8835A;
+  --w8-sunset-bright: #F2A578;
+  --w8-sunset-deep: #9E5538;
+  background: #0E2435;
+  color: #FAF7F2;
+}
+.world-eight__bg {
+  position: absolute; inset: 0; z-index: 0;
+  background: linear-gradient(180deg, #0E2435 0%, #1C2940 60%, #2A2530 100%);
+  pointer-events: none;
+}
+.world-eight__horizon {
+  position: absolute; inset: 0; z-index: 0;
+  background:
+    radial-gradient(ellipse at 50% 95%, rgba(216,131,90,0.25) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 100%, rgba(255,200,150,0.18) 0%, transparent 30%);
+  pointer-events: none;
+}
+.world-eight__rays {
+  position: absolute; inset: 0; z-index: 0;
+  background:
+    conic-gradient(from 270deg at 50% 110%,
+      transparent 0deg, rgba(242,165,120,0.08) 8deg, transparent 16deg,
+      rgba(242,165,120,0.06) 24deg, transparent 32deg);
+  pointer-events: none;
+}
+
+.sunset-label { color: var(--w8-sunset-bright); }
+.sunset-italic {
+  background: linear-gradient(180deg, #FFD0A0 0%, #F2A578 50%, #D8835A 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text; font-style: italic;
+}
+.sunset-rule::before {
+  content: ""; display: inline-block; width: 30px; height: 1px;
+  background: var(--w8-sunset); margin-right: 8px; vertical-align: middle;
+}
+.text-sunset-bright { color: var(--w8-sunset-bright); }
+.border-sunset\/20 { border-color: rgba(216,131,90,0.20); }
+.ivory-soft { color: rgba(250,247,242,0.42); }
+
+.world-eight__form {
+  background: rgba(14,36,53,0.55);
+  border: 1px solid rgba(216,131,90,0.20);
+  border-radius: 4px;
+  padding: 2rem;
+  backdrop-filter: blur(6px);
+}
+
+.world-eight__field input,
+.world-eight__field select,
+.world-eight__field textarea {
+  width: 100%;
+  background: rgba(0,0,0,0.18);
+  border: 1px solid rgba(216,131,90,0.25);
+  padding: 0.85rem 1rem;
+  color: #FAF7F2;
+  border-radius: 2px;
+  font-size: 0.95rem;
+  font-family: 'Inter', sans-serif;
+  transition: border-color 0.3s, background 0.3s;
+}
+.world-eight__field input:focus,
+.world-eight__field select:focus,
+.world-eight__field textarea:focus {
+  outline: none;
+  border-color: var(--w8-sunset-bright);
+  background: rgba(0,0,0,0.30);
+}
+.world-eight__field textarea { resize: vertical; min-height: 120px; }
+
+.world-eight__alert,
+.world-eight__success {
+  display: flex; align-items: center; gap: 0.5rem;
+  padding: 0.85rem 1rem; margin-top: 1.25rem;
+  border-radius: 2px; font-size: 0.875rem;
+}
+.world-eight__alert {
+  background: rgba(216,131,90,0.18);
+  border: 1px solid var(--w8-sunset);
+  color: var(--w8-sunset-bright);
+}
+.world-eight__success {
+  background: rgba(122,143,107,0.18);
+  border: 1px solid #A6B891;
+  color: #C9D8B0;
+}
+
+.world-eight__aside {
+  background: linear-gradient(135deg,
+    rgba(216,131,90,0.10) 0%,
+    rgba(14,36,53,0.55) 100%);
+  border: 1px solid rgba(216,131,90,0.25);
+  border-radius: 4px;
+  padding: 2.5rem 2rem;
+}
+.world-eight__signature {
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(216,131,90,0.20);
+}

@@ -1,0 +1,81 @@
+.world-six {
+  background: #070F1A;
+  color: #FAF7F2;
+}
+.world-six__bg {
+  position: absolute; inset: 0; z-index: 0;
+  background: linear-gradient(180deg, #070F1A 0%, #0E2435 100%);
+  pointer-events: none;
+}
+.world-six__aurora {
+  position: absolute; inset: 0; z-index: 0;
+  background:
+    radial-gradient(ellipse at 15% 30%, rgba(241,203,191,0.12) 0%, transparent 50%),
+    radial-gradient(ellipse at 85% 70%, rgba(160,189,193,0.15) 0%, transparent 55%),
+    radial-gradient(ellipse at 50% 100%, rgba(201,169,97,0.10) 0%, transparent 50%);
+  pointer-events: none;
+}
+.aurora-label {
+  background: linear-gradient(90deg, #DDC289, #F1CBBF, #A0BDC1, #DDC289);
+  background-size: 300% 100%;
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text; animation: auroraShift 6s linear infinite;
+}
+.aurora-italic {
+  background: linear-gradient(90deg, #DDC289 0%, #F1CBBF 33%, #A0BDC1 66%, #DDC289 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text; font-style: italic;
+  animation: auroraShift 5s linear infinite;
+}
+@keyframes auroraShift {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+.ivory-soft { color: rgba(250,247,242,0.42); }
+
+.world-six__card {
+  position: relative; padding: 2rem;
+  border: 1px solid rgba(201,169,97,0.20);
+  border-radius: 4px;
+  overflow: hidden;
+  cursor: pointer;
+  isolation: isolate;
+  transition: transform 0.5s cubic-bezier(0.2,0.8,0.2,1),
+              border-color 0.5s, box-shadow 0.5s;
+}
+.world-six__card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(201,169,97,0.6);
+  box-shadow: 0 24px 60px -24px rgba(201,169,97,0.35),
+              0 0 0 1px rgba(255,255,255,0.06) inset;
+}
+.world-six__card-aurora {
+  position: absolute; inset: 0; z-index: 0;
+  background:
+    radial-gradient(ellipse at top right,
+      rgba(255,255,255,0.18) 0%, transparent 60%);
+  opacity: 0; transition: opacity 0.6s;
+  mix-blend-mode: overlay;
+}
+.world-six__card:hover .world-six__card-aurora { opacity: 1; }
+
+.world-six__swatch {
+  width: 22px; height: 22px; border-radius: 999px;
+  border: 1.5px solid rgba(255,255,255,0.6);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.35);
+  display: inline-block;
+}
+
+.world-six__card-line {
+  position: absolute; bottom: 0; left: 0;
+  height: 2px; width: 0;
+  background: linear-gradient(90deg, #DDC289, #F1CBBF, #A0BDC1);
+  transition: width 0.6s cubic-bezier(0.2,0.8,0.2,1);
+}
+.world-six__card:hover .world-six__card-line { width: 100%; }
+
+@media (prefers-reduced-motion: reduce) {
+  .aurora-label, .aurora-italic { animation: none; }
+  .world-six__card, .world-six__card:hover { transition: none; transform: none; }
+}

@@ -1,0 +1,200 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================
+   DESIGN TOKENS (THEMES)
+   ============================================ */
+@layer base {
+  :root[data-theme='dark'] {
+    --color-bg: 26 45 79; /* #1A2D4F */
+    --color-bg-deep: 14 27 51; /* #0E1B33 */
+    --color-bg-light: 36 62 104; /* #243E68 */
+    --color-surface: 36 62 104;
+    --color-text: 239 229 208; /* #EFE5D0 */
+    --color-text-soft: 197 188 168;
+    --color-text-dim: 137 130 116;
+    --color-gold: 201 169 97; /* #C9A961 */
+    --color-gold-bright: 221 194 137; /* #DDC289 */
+    --color-gold-soft: 201 169 97; /* used with alpha */
+    --color-line: 50 60 80;
+    --color-line-strong: 80 90 110;
+  }
+
+  :root[data-theme='light'] {
+    --color-bg: 247 240 221; /* #F7F0DD */
+    --color-bg-deep: 239 229 208; /* #EFE5D0 */
+    --color-bg-light: 252 247 232;
+    --color-surface: 239 229 208;
+    --color-text: 26 45 79; /* #1A2D4F */
+    --color-text-soft: 70 85 110;
+    --color-text-dim: 130 140 158;
+    --color-gold: 184 150 74; /* #B8964A */
+    --color-gold-bright: 201 169 97;
+    --color-gold-soft: 184 150 74;
+    --color-line: 200 188 168;
+    --color-line-strong: 165 152 130;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-bg text-text font-sans antialiased;
+    transition: background-color 0.6s ease, color 0.6s ease;
+    overflow-x: hidden;
+  }
+
+  /* Custom cursor support */
+  @media (pointer: fine) {
+    body,
+    a,
+    button,
+    .magnetic {
+      cursor: none;
+    }
+  }
+
+  /* Selection */
+  ::selection {
+    background: rgb(var(--color-gold) / 0.3);
+    color: rgb(var(--color-text));
+  }
+
+  /* Focus visible */
+  *:focus-visible {
+    outline: 2px solid rgb(var(--color-gold-bright));
+    outline-offset: 4px;
+    border-radius: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* ============================================
+   COMPONENTS
+   ============================================ */
+@layer components {
+  .container-x {
+    @apply mx-auto max-w-[1200px] px-8;
+  }
+
+  .eyebrow {
+    @apply font-mono text-[11px] font-medium uppercase tracking-widest text-gold-bright;
+  }
+
+  .display {
+    @apply font-display;
+  }
+}
+
+/* ============================================
+   UTILITIES
+   ============================================ */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* ============================================
+   CURSOR TRAIL (kept as plain CSS because it's
+   dynamic DOM injection)
+   ============================================ */
+.trail-dot {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgb(var(--color-gold-bright)) 0%,
+    rgb(var(--color-gold)) 60%,
+    transparent 100%
+  );
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  animation: trailFade 0.7s ease-out forwards;
+  z-index: 9998;
+  will-change: transform, opacity;
+}
+
+@keyframes trailFade {
+  0% {
+    opacity: 0.8;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.2);
+  }
+}
+
+@media (pointer: coarse) {
+  .trail-dot {
+    display: none;
+  }
+}
+
+/* Custom cursor primitives */
+.cursor-dot,
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  will-change: transform;
+}
+
+.cursor-dot {
+  width: 6px;
+  height: 6px;
+  background: rgb(var(--color-gold));
+  border-radius: 50%;
+  transition: width 0.2s, height 0.2s;
+}
+
+.cursor-ring {
+  width: 32px;
+  height: 32px;
+  border: 1px solid rgb(var(--color-gold));
+  border-radius: 50%;
+  opacity: 0.5;
+  transition: width 0.3s ease, height 0.3s ease, opacity 0.3s ease,
+    background 0.3s ease;
+}
+
+.cursor-ring.hover {
+  width: 60px;
+  height: 60px;
+  opacity: 1;
+  background: rgb(var(--color-gold) / 0.15);
+  border-color: rgb(var(--color-gold-bright));
+}
+
+@media (pointer: coarse) {
+  .cursor-dot,
+  .cursor-ring {
+    display: none;
+  }
+}
+
+/* Hide native cursor on interactive elements when custom cursor active */
+@media (pointer: fine) {
+  input,
+  select,
+  textarea {
+    cursor: text !important;
+  }
+}

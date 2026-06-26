@@ -1,0 +1,183 @@
+/* ============================================================
+   MUNDO III · ESTILOS LOCALES
+   ============================================================
+   Acompañante: Pearl Silver #C5C8D6
+   Light section · alterna con los mundos navy.
+   Atmósfera: papel técnico de arquitecto, isométrica sutil.
+   ============================================================ */
+
+.world-three {
+  --w3-pearl-light: #EAEDF3;
+  --w3-pearl: #C5C8D6;
+  --w3-pearl-deep: #8E96A8;
+  --w3-navy: #14233F;
+  --w3-navy-ink: #1C4058;
+  --w3-gold: #A88944;
+  --w3-paper: #F5F6F9;
+}
+
+.world-three__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    linear-gradient(180deg,
+      var(--w3-pearl-light) 0%,
+      var(--w3-paper) 40%,
+      var(--w3-pearl) 100%);
+  pointer-events: none;
+}
+
+/* Textura tipo papel pergamino */
+.world-three__paper {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E");
+  opacity: 0.08;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+
+/* Grid isométrico de fondo (puntos finos) */
+.world-three__grid {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image:
+    radial-gradient(circle, rgba(20, 35, 63, 0.10) 1px, transparent 1px);
+  background-size: 28px 28px;
+  background-position: -14px -14px;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Tokens de texto */
+.navy-text {
+  color: var(--w3-navy);
+}
+.navy-text\/75 {
+  color: rgba(20, 35, 63, 0.75);
+}
+.navy-text\/70 {
+  color: rgba(20, 35, 63, 0.70);
+}
+.navy-text\/65 {
+  color: rgba(20, 35, 63, 0.65);
+}
+.silver-ink {
+  color: var(--w3-pearl-deep);
+}
+.silver-italic {
+  color: var(--w3-gold);
+  font-style: italic;
+}
+
+/* Línea silver al lado del label */
+.silver-rule::before {
+  content: "";
+  display: inline-block;
+  width: 30px;
+  height: 1px;
+  background: var(--w3-pearl-deep);
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+/* Steps ledger */
+.world-three__step {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  padding: 1.25rem 1rem;
+  border-bottom: 1px solid rgba(20, 35, 63, 0.12);
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  position: relative;
+}
+.world-three__step:hover {
+  background: rgba(255, 255, 255, 0.5);
+  transform: translateX(4px);
+}
+.world-three__step:hover::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--w3-gold);
+}
+
+.world-three__step-num {
+  font-family: 'Fraunces', serif;
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--w3-gold);
+  line-height: 1;
+  flex-shrink: 0;
+  width: 48px;
+}
+
+.world-three__step-content {
+  flex: 1;
+}
+
+/* Blueprint frame: parece una lámina técnica enmarcada */
+.world-three__blueprint-frame {
+  position: relative;
+  background: var(--w3-paper);
+  border: 1px solid rgba(20, 35, 63, 0.18);
+  padding: 16px;
+  box-shadow:
+    0 30px 60px -30px rgba(20, 35, 63, 0.25),
+    0 8px 24px -10px rgba(20, 35, 63, 0.15);
+}
+.world-three__blueprint-frame::before {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border: 1px dashed rgba(20, 35, 63, 0.18);
+  pointer-events: none;
+}
+
+.world-three__blueprint-label {
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--w3-paper);
+  padding: 0 12px;
+  border: 1px solid rgba(20, 35, 63, 0.18);
+}
+
+.blueprint-canvas {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .world-three__blueprint-frame {
+    margin-top: 2rem;
+  }
+}
+@media (max-width: 768px) {
+  .world-three__step {
+    padding: 1rem 0.75rem;
+    gap: 1rem;
+  }
+  .world-three__step-num {
+    font-size: 22px;
+    width: 36px;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .world-three__step,
+  .world-three__step:hover {
+    transition: none;
+    transform: none;
+  }
+}

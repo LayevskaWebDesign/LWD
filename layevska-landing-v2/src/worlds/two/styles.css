@@ -1,0 +1,143 @@
+/* ============================================================
+   MUNDO II · ESTILOS LOCALES
+   ============================================================
+   Acompañante: Ember Warm #E8A87C
+   Atmósfera: navy + warm radial (sentís el calor de una vela
+   encendida desde la esquina superior derecha).
+   ============================================================ */
+
+.world-two {
+  --w2-bg: #0E2435;
+  --w2-bg-deep: #070F1A;
+  --w2-ember: #E8A87C;
+  --w2-ember-bright: #F2C2A0;
+  --w2-ember-deep: #B57A52;
+  --w2-ember-soft: rgba(232, 168, 124, 0.12);
+  background: var(--w2-bg);
+  color: #FAF7F2;
+}
+
+/* Fondo navy base */
+.world-two__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    linear-gradient(180deg, #0E2435 0%, #1C4058 100%);
+  pointer-events: none;
+}
+
+/* Calor radial desde la esquina superior derecha — la "vela" */
+.world-two__warmth {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse at 85% 8%,
+      rgba(232, 168, 124, 0.18) 0%,
+      rgba(232, 168, 124, 0.08) 30%,
+      transparent 60%),
+    radial-gradient(ellipse at 15% 90%,
+      rgba(156, 196, 212, 0.06) 0%,
+      transparent 50%);
+  pointer-events: none;
+}
+
+/* Noise sutilísimo para evitar banding */
+.world-two__noise {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+/* Medallón */
+.medalion-threads {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 12px 40px rgba(232, 168, 124, 0.18));
+}
+
+/* Texto ember-tinted */
+.text-ember {
+  color: var(--w2-ember);
+}
+.text-ember-bright {
+  color: var(--w2-ember-bright);
+}
+.ember-italic {
+  color: var(--w2-ember-bright);
+  font-style: italic;
+}
+.border-ember\/20 {
+  border-color: rgba(232, 168, 124, 0.20);
+}
+
+/* Línea ember al lado del label */
+.ember-rule::before {
+  content: "";
+  display: inline-block;
+  width: 30px;
+  height: 1px;
+  background: var(--w2-ember);
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+/* Mezcla de gradiente dorado + ember para el número */
+.ember-gold {
+  background: linear-gradient(180deg, #F2C2A0 0%, #E8A87C 60%, #B57A52 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Card de confidencia */
+.world-two__card {
+  display: flex;
+  gap: 1.5rem;
+  padding: 1.5rem 1.75rem;
+  background: rgba(14, 36, 53, 0.5);
+  border: 1px solid rgba(232, 168, 124, 0.15);
+  border-left: 2px solid var(--w2-ember);
+  border-radius: 2px;
+  backdrop-filter: blur(6px);
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.world-two__card:hover {
+  background: rgba(14, 36, 53, 0.7);
+  border-color: rgba(232, 168, 124, 0.35);
+  transform: translateX(4px);
+  box-shadow: 0 18px 40px -18px rgba(232, 168, 124, 0.35);
+}
+
+.world-two__card-marker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding-top: 0.25rem;
+  flex-shrink: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .world-two__card {
+    padding: 1.25rem 1.25rem;
+    gap: 1rem;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .world-two__card {
+    transition: none;
+  }
+  .world-two__card:hover {
+    transform: none;
+  }
+}

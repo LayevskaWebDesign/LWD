@@ -1,0 +1,440 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   BASE
+   ============================================================ */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-navy-deep text-ivory font-sans;
+    background-color: #070F1A;
+    overflow-x: hidden;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background-color: rgba(201, 169, 97, 0.35);
+    color: #FAF7F2;
+  }
+
+  /* Scrollbar dorado */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #070F1A;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #C9A961, #7A6020);
+    border-radius: 0;
+    border: 2px solid #070F1A;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #DDC289, #A88944);
+  }
+}
+
+/* ============================================================
+   COMPONENTES UTILITARIOS
+   ============================================================ */
+@layer components {
+  /* === BOTÓN BASE === */
+  .btn {
+    @apply inline-flex items-center gap-2.5 px-6 py-3.5 font-sans text-xs font-semibold uppercase tracking-widest2 rounded-sm transition-all duration-300 cursor-pointer select-none border;
+    will-change: transform;
+  }
+  .btn:hover {
+    transform: translateY(-2px);
+  }
+
+  /* === BOTÓN PRIMARIO DORADO === */
+  .btn-primary {
+    background: linear-gradient(180deg, #DDC289 0%, #C9A961 50%, #A88944 100%);
+    color: #0E2435;
+    border-color: #DDC289;
+    box-shadow: 0 6px 20px -4px rgba(201, 169, 97, 0.5),
+                inset 0 1px 0 rgba(255, 247, 212, 0.4);
+  }
+  .btn-primary:hover {
+    background: linear-gradient(180deg, #F2D88A 0%, #DDC289 50%, #C9A961 100%);
+    box-shadow: 0 14px 32px -6px rgba(201, 169, 97, 0.65),
+                inset 0 1px 0 rgba(255, 247, 212, 0.55);
+  }
+
+  /* === BOTÓN OUTLINE === */
+  .btn-outline {
+    @apply text-ivory bg-transparent;
+    border-color: rgba(250, 247, 242, 0.4);
+  }
+  .btn-outline:hover {
+    background: #FAF7F2;
+    color: #0E2435;
+    border-color: #FAF7F2;
+  }
+
+  /* === ETIQUETA DE CAPÍTULO === */
+  .chapter-label {
+    @apply inline-flex items-center gap-3 font-mono text-[10px] uppercase tracking-widest2 text-gold-bright;
+  }
+  .chapter-label::before {
+    content: "";
+    @apply inline-block w-8 h-px bg-gold;
+  }
+
+  /* === MARCO DE MUSEO 3D === */
+  .museum-frame {
+    @apply relative;
+    transform-style: preserve-3d;
+    transition: transform 0.35s cubic-bezier(.2,.8,.2,1),
+                box-shadow 0.4s ease;
+    border-radius: 2px;
+    /* Doble marco dorado: borde externo + interno */
+    background: linear-gradient(135deg, #C9A961 0%, #7A6020 50%, #C9A961 100%);
+    padding: 12px;
+    box-shadow: 0 30px 60px -25px rgba(0, 0, 0, 0.65),
+                0 12px 24px -8px rgba(201, 169, 97, 0.20),
+                inset 0 0 0 1px rgba(255, 247, 212, 0.35);
+  }
+  .museum-frame::before {
+    content: "";
+    @apply absolute inset-2 pointer-events-none rounded-sm;
+    border: 1px solid rgba(14, 36, 53, 0.7);
+    z-index: 2;
+  }
+  .museum-frame:hover {
+    box-shadow: 0 40px 80px -25px rgba(0, 0, 0, 0.8),
+                0 0 32px rgba(221, 194, 137, 0.45),
+                inset 0 0 0 1px rgba(255, 247, 212, 0.55);
+  }
+}
+
+/* ============================================================
+   ESTILOS CRÍTICOS DEL PRELOADER (no van en Tailwind)
+   ============================================================ */
+.preloader-bg {
+  background:
+    radial-gradient(ellipse at center, #1C4058 0%, #0E2435 60%, #070F1A 100%),
+    #070F1A;
+}
+.preloader-bg::after {
+  /* Textura tipo terciopelo */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.78 0 0 0 0 0.66 0 0 0 0 0.38 0 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.35;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+/* === TEXTO 3D DORADO METÁLICO === */
+.gold-3d {
+  font-family: 'Fraunces', 'Cormorant Garamond', serif;
+  font-weight: 700;
+  background: linear-gradient(180deg,
+    #FFE5A0 0%,
+    #F2D88A 18%,
+    #DDC289 38%,
+    #C9A961 55%,
+    #A88944 75%,
+    #7A6020 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow:
+    /* Profundidad 3D simulada */
+    0 1px 0 rgba(122, 96, 32, 0.6),
+    0 2px 0 rgba(105, 84, 32, 0.45),
+    0 3px 1px rgba(79, 63, 24, 0.4),
+    0 4px 2px rgba(0, 0, 0, 0.25),
+    /* Glow dorado externo */
+    0 0 30px rgba(221, 194, 137, 0.4),
+    0 0 60px rgba(201, 169, 97, 0.25);
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.55));
+  position: relative;
+  display: inline-block;
+}
+
+/* Brillo recorriendo el texto */
+.gold-3d::before {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg,
+    transparent 30%,
+    rgba(255, 247, 212, 0.85) 50%,
+    transparent 70%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shineSweep 3.5s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes shineSweep {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Versión inline (sin profundidad 3D, para títulos pequeños) */
+.gold-text {
+  background: linear-gradient(180deg, #F2D88A 0%, #C9A961 50%, #A88944 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.35));
+}
+
+/* === SPARKLES DEL PRELOADER === */
+.sparkle {
+  position: absolute;
+  pointer-events: none;
+  background: radial-gradient(circle, #FFE5A0 0%, #DDC289 30%, transparent 70%);
+  border-radius: 50%;
+  filter: drop-shadow(0 0 8px rgba(221, 194, 137, 0.9));
+  will-change: transform, opacity;
+}
+.sparkle::before,
+.sparkle::after {
+  content: "";
+  position: absolute;
+  background: linear-gradient(90deg, transparent, #FFE5A0, transparent);
+  border-radius: 50%;
+}
+.sparkle::before {
+  inset: 50% -50% 50% -50%;
+  height: 1px;
+  width: 200%;
+}
+.sparkle::after {
+  inset: -50% 50% -50% 50%;
+  width: 1px;
+  height: 200%;
+}
+
+/* ============================================================
+   PARTÍCULAS CANVAS DEL HERO
+   ============================================================ */
+#particles-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+/* ============================================================
+   DOTS DE COLOR EN PORTAFOLIO
+   ============================================================ */
+.color-pop {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  box-shadow: 0 0 14px currentColor;
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* ============================================================
+   TEXT SHADOWS PARA TÍTULOS GRANDES
+   ============================================================ */
+.text-shadow-dark {
+  text-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.5),
+    0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+/* ============================================================
+   FAQ — Borde dorado activo
+   ============================================================ */
+.faq-item[data-open="true"] {
+  border-color: rgba(201, 169, 97, 0.5);
+  box-shadow: 0 0 0 1px rgba(201, 169, 97, 0.15);
+  background: rgba(14, 36, 53, 0.65);
+}
+
+/* ============================================================
+   ACCESIBILIDAD — Reducción de movimiento
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .gold-3d::before {
+    display: none;
+  }
+}
+
+/* ============================================================
+   SECCIÓN CLARA — Override de tokens para alternar oscuro/claro
+   Aplica .section-light al wrapper <section> y dentro:
+   - text-ivory pasa a navy automáticamente
+   - chapter-label se oscurece
+   - gold-text usa variante más sólida
+   - bordes y bg de cards se invierten
+   Hay 3 variantes de fondo light:
+     .section-light.tone-salmon  → #F1CBBF
+     .section-light.tone-ivory   → #FAF7F2
+     .section-light.tone-teal    → #A0BDC1
+   ============================================================ */
+.section-light {
+  background: #F1CBBF !important; /* default salmon */
+  color: #0E2435;
+}
+.section-light.tone-ivory {
+  background: linear-gradient(180deg, #FAF7F2 0%, #F1E9DD 100%) !important;
+}
+.section-light.tone-salmon {
+  background:
+    radial-gradient(ellipse at 80% 20%, rgba(201,169,97,0.18) 0%, transparent 55%),
+    linear-gradient(180deg, #F5C3C0 0%, #F1CBBF 50%, #D8B0AB 100%) !important;
+}
+.section-light.tone-teal {
+  background:
+    radial-gradient(ellipse at 20% 80%, rgba(241,203,191,0.22) 0%, transparent 55%),
+    linear-gradient(180deg, #A0BDC1 0%, #7FA1A8 100%) !important;
+}
+.section-light.tone-cream {
+  background:
+    radial-gradient(ellipse at 50% 50%, rgba(216,176,171,0.20) 0%, transparent 60%),
+    linear-gradient(180deg, #F1E9DD 0%, #E8DCC4 100%) !important;
+}
+
+/* Quita gradientes radiales heredados del style inline */
+.section-light::before,
+.section-light::after {
+  display: none !important;
+}
+
+/* Texto */
+.section-light .text-ivory,
+.section-light [class*="text-ivory/"] {
+  color: #0E2435 !important;
+}
+.section-light .text-shadow-dark {
+  text-shadow: 0 1px 0 rgba(250, 247, 242, 0.4);
+}
+.section-light .font-display,
+.section-light h1,
+.section-light h2,
+.section-light h3,
+.section-light h4 {
+  color: #0E2435;
+}
+
+/* Gold text más sólido sobre fondos claros */
+.section-light .gold-text {
+  background: linear-gradient(180deg, #A88944 0%, #7A6020 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 1px 1px rgba(14, 36, 53, 0.25));
+}
+
+/* Chapter label */
+.section-light .chapter-label {
+  color: #7A6020;
+}
+.section-light .chapter-label::before {
+  background: #7A6020;
+}
+
+/* Card / panel */
+.section-light .bg-navy-deep,
+.section-light [class*="bg-navy-deep/"] {
+  background-color: rgba(255, 255, 255, 0.4) !important;
+  backdrop-filter: blur(4px);
+}
+.section-light [class*="border-gold/"] {
+  border-color: rgba(122, 96, 32, 0.30) !important;
+}
+.section-light .border-gold {
+  border-color: #A88944 !important;
+}
+
+/* Hover en cards */
+.section-light .hover\:border-gold\/55:hover,
+.section-light .hover\:shadow-gold:hover {
+  border-color: #A88944 !important;
+  box-shadow: 0 10px 40px -10px rgba(122, 96, 32, 0.35) !important;
+}
+
+/* Ítems FAQ - faq-item */
+.section-light .faq-item {
+  background: rgba(255, 255, 255, 0.55) !important;
+  border-color: rgba(122, 96, 32, 0.25) !important;
+}
+.section-light .faq-item[data-open="true"] {
+  border-color: #A88944 !important;
+  background: rgba(255, 255, 255, 0.75) !important;
+}
+
+/* Botones primary intactos (siguen con gradiente dorado) */
+/* Pero los outline cambian */
+.section-light .btn-outline {
+  color: #0E2435 !important;
+  border-color: rgba(14, 36, 53, 0.45) !important;
+}
+.section-light .btn-outline:hover {
+  background: #0E2435 !important;
+  color: #FAF7F2 !important;
+  border-color: #0E2435 !important;
+}
+
+/* Stars (testimonios) — más visibles sobre fondos claros */
+.section-light svg[fill="#DDC289"] {
+  fill: #A88944 !important;
+  stroke: #A88944 !important;
+}
+
+/* ============================================================
+   TRANSITIONES ENTRE SECCIONES — keyframes auxiliares
+   ============================================================ */
+@keyframes pageTurnCorner {
+  0% { transform: translate(0, 0) scale(1); opacity: 0; }
+  50% { opacity: 0.9; }
+  100% { transform: translate(2px, -2px) scale(1.02); opacity: 0.6; }
+}
+@keyframes lensFlareSweep {
+  0% { transform: translateX(-30vw); opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { transform: translateX(130vw); opacity: 0; }
+}
+@keyframes canvasOrganicPulse {
+  0%, 100% { transform: rotate(-3deg) scale(1); opacity: 0.5; }
+  50% { transform: rotate(3deg) scale(1.05); opacity: 0.75; }
+}
+
+/* ============================================================
+   AJUSTES RESPONSIVE
+   ============================================================ */
+@media (max-width: 768px) {
+  .museum-frame {
+    padding: 8px;
+  }
+  .gold-3d {
+    text-shadow:
+      0 1px 0 rgba(122, 96, 32, 0.6),
+      0 2px 0 rgba(105, 84, 32, 0.45),
+      0 0 20px rgba(221, 194, 137, 0.35);
+  }
+}

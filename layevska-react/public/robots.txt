@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /mockups-v2/
+
+Sitemap: https://layevska.com/sitemap.xml
