@@ -1,0 +1,64 @@
+/* ===== Super Pro: preloader, escena 3D y cotizador ===== */
+
+/* Preloader (entrada coreografiada) */
+.preloader {
+  position: fixed; inset: 0; z-index: 200; background: var(--navy-900);
+  display: grid; place-content: center; gap: 1.4rem; justify-items: center;
+}
+.pl-mark {
+  font-family: var(--font-display); font-weight: 800; color: #fff;
+  font-size: clamp(2rem, 8vw, 3.2rem); opacity: 0; transform: translateY(16px);
+}
+.pl-mark .dot { color: var(--coral); }
+.pl-bar { width: min(220px, 60vw); height: 4px; border-radius: 999px; background: rgba(255,255,255,.15); overflow: hidden; }
+.pl-bar span { display: block; height: 100%; width: 100%; background: var(--coral); transform: scaleX(0); transform-origin: left; border-radius: 999px; }
+
+/* Escena 3D del hero */
+.scene-wrap {
+  position: relative; width: 100%; aspect-ratio: 1 / 1; max-width: 460px; margin-inline: auto;
+  border-radius: var(--r-lg); overflow: hidden;
+  background: radial-gradient(120% 120% at 50% 0%, #21345a 0%, var(--navy-900) 70%);
+  box-shadow: var(--shadow-lg);
+}
+.scene-wrap canvas { display: block; }
+
+/* Cotizador interactivo */
+.cotizador { display: grid; gap: 1.4rem; grid-template-columns: 1fr; align-items: start; }
+.cz-form {
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg);
+  padding: clamp(1.4rem, 4vw, 2rem); box-shadow: var(--shadow-sm); display: grid; gap: 1.5rem;
+}
+.cz-block { display: grid; gap: .7rem; }
+.cz-label { font-weight: 700; color: var(--navy-700); font-size: 1rem; }
+.cz-options { display: flex; flex-wrap: wrap; gap: .5rem; }
+.cz-chip {
+  padding: .6rem .95rem; border-radius: 999px; border: 1.5px solid var(--line);
+  background: #fff; color: var(--navy-700); font-weight: 600; font-size: .92rem; transition: .16s ease;
+}
+.cz-chip:hover { border-color: var(--coral); }
+.cz-chip.is-active { background: var(--navy); color: #fff; border-color: var(--navy); }
+.cz-form input[type="number"] {
+  font: inherit; padding: .8rem .9rem; border-radius: var(--r-sm); border: 1.5px solid var(--line); max-width: 220px;
+}
+.cz-form input[type="number"]:focus { outline: none; border-color: var(--coral); box-shadow: 0 0 0 3px rgba(232,76,61,.15); }
+.cz-hint { color: var(--muted); font-size: .85rem; }
+.cz-extras { display: grid; gap: .55rem; }
+.cz-extra {
+  display: flex; align-items: center; gap: .6rem; padding: .7rem .9rem;
+  border: 1.5px solid var(--line); border-radius: var(--r-sm); cursor: pointer; transition: .16s ease;
+}
+.cz-extra.is-active { border-color: var(--coral); background: #fff6f4; }
+.cz-extra input { width: 18px; height: 18px; accent-color: var(--coral); flex: none; }
+.cz-result {
+  background: linear-gradient(150deg, var(--navy) 0%, var(--navy-900) 100%); color: #fff;
+  border-radius: var(--r-lg); padding: clamp(1.5rem, 4vw, 2rem); box-shadow: var(--shadow);
+  position: sticky; top: 90px; display: grid; gap: .8rem;
+}
+.cz-result-label { display: inline-flex; align-items: center; gap: .5rem; font-weight: 600; color: color-mix(in srgb, #fff 80%, transparent); font-size: .95rem; }
+.cz-total { font-family: var(--font-display); font-weight: 800; font-size: clamp(2.2rem, 6vw, 3rem); line-height: 1; }
+.cz-disc { color: color-mix(in srgb, #fff 72%, transparent); font-size: .85rem; }
+.cz-cta { width: 100%; margin-top: .4rem; }
+
+@media (min-width: 880px) {
+  .cotizador { grid-template-columns: 1.4fr .9fr; }
+}

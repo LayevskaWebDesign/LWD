@@ -1,0 +1,54 @@
+<!-- ───────────────────────────────────────────────────────────────
+     ANALÍTICA DE CONVERSIÓN · Plausible (cookieless, ~1 KB)
+     Reemplazá "tudominio.com" por el dominio real del cliente.
+     Va dentro de <head> en index.html.
+     ─────────────────────────────────────────────────────────────── -->
+<script defer data-domain="tudominio.com"
+        src="https://plausible.io/js/script.tagged-events.js"></script>
+<script>
+  // Habilita window.plausible(...) para eventos manuales.
+  window.plausible = window.plausible || function () {
+    (window.plausible.q = window.plausible.q || []).push(arguments)
+  }
+</script>
+
+<!-- ===============================================================
+     CÓMO DISPARAR LOS EVENTOS (ejemplos en React/TSX)
+     ===============================================================
+
+  // 1) Click en WhatsApp — opción declarativa (clase tagged-events):
+  <a
+    href="https://wa.me/506XXXXXXXX?text=Hola..."
+    className="plausible-event-name=WhatsApp+Click"
+    target="_blank" rel="noopener noreferrer"
+  >
+    Escribinos por WhatsApp
+  </a>
+
+  // 1b) Click en WhatsApp — opción manual:
+  <button onClick={() => window.plausible?.('WhatsApp_Click')}>WhatsApp</button>
+
+  // 2) Envío del formulario de contacto (al confirmarse el submit):
+  function onSubmitOk() {
+    window.plausible?.('Form_Submit')
+  }
+
+  // 3) Cotizador completado (solo Super Pro), con el plan como propiedad:
+  function onCotizacionLista(total: number) {
+    window.plausible?.('Cotizador_Completado', { props: { plan: 'super-pro', total } })
+  }
+
+  =============================================================== -->
+
+<!-- ───────────────────────────────────────────────────────────────
+     ALTERNATIVA: Google Analytics 4 (más pesado, REQUIERE consentimiento de cookies).
+     Usar solo si el cliente ya lo tiene. Reemplazá G-XXXXXXXXXX.
+     ───────────────────────────────────────────────────────────────
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+     ─────────────────────────────────────────────────────────────── -->

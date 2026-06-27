@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#1B2C4B" />
+
+    <title>RODMA | Impresión Digital y Gran Formato en Desamparados</title>
+    <meta name="description" content="Centro de impresión digital, gran formato, diseño gráfico, sublimación y grabado láser en Gravilias, Desamparados. +13 años de calidad garantizada. Cotizá por WhatsApp." />
+    <link rel="canonical" href="https://rodma.cr/" />
+
+    <!-- Open Graph / Twitter -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_CR" />
+    <meta property="og:title" content="RODMA | Impresión Digital y Gran Formato en Desamparados" />
+    <meta property="og:description" content="Hacé física tu idea, con calidad garantizada. +13 años en impresión digital, gran formato, diseño, sublimación y grabado láser." />
+    <meta property="og:url" content="https://rodma.cr/" />
+    <meta property="og:image" content="/favicon.svg" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Fuentes self-hosted vía @fontsource (importadas en main.tsx). Sin recursos render-blocking. -->
+
+    <!-- Datos estructurados: negocio local -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "RODMA",
+      "description": "Centro de impresión digital, gran formato, diseño gráfico, sublimación y grabado láser en Desamparados, San José.",
+      "image": "https://rodma.cr/favicon.svg",
+      "telephone": "+50685500431",
+      "email": "rodmacrc@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Gravilias, Desamparados",
+        "addressRegion": "San José",
+        "addressCountry": "CR"
+      },
+      "areaServed": "Desamparados, San José, Costa Rica",
+      "priceRange": "₡₡",
+      "openingHoursSpecification": [
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "07:00", "closes": "18:00" },
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "14:00" }
+      ],
+      "sameAs": [
+        "https://www.instagram.com/rodma.cr",
+        "https://www.facebook.com/profile.php?id=100063467806360"
+      ]
+    }
+    </script>
+  </head>
+  <body>
+    <!-- Form oculto: Netlify Forms lo detecta en el build; la app usa el formulario de React -->
+    <form name="contacto" netlify netlify-honeypot="bot-field" hidden>
+      <input type="text" name="nombre" />
+      <input type="email" name="email" />
+      <input type="tel" name="telefono" />
+      <textarea name="mensaje"></textarea>
+    </form>
+
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

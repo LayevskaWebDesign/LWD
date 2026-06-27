@@ -1,0 +1,36 @@
+/* Animaciones extra de la versión Animation (CSS).
+   Todo va dentro de prefers-reduced-motion: no-preference para respetar la preferencia. */
+
+.hero { isolation: isolate; }
+.hero .container { position: relative; z-index: 1; }
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Blob de marca que deriva suavemente detrás del hero */
+  .hero::after {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    pointer-events: none;
+    width: 46vmax;
+    height: 46vmax;
+    right: -12vmax;
+    top: -18vmax;
+    border-radius: 50%;
+    background:
+      radial-gradient(circle at 30% 30%, rgba(232, 76, 61, 0.16), transparent 60%),
+      radial-gradient(circle at 70% 70%, rgba(201, 169, 221, 0.30), transparent 60%);
+    filter: blur(6px);
+    animation: blobDrift 18s ease-in-out infinite alternate;
+  }
+  .hero-card { animation: floaty 6s ease-in-out infinite alternate; }
+}
+
+@keyframes blobDrift {
+  from { transform: translate(0, 0) rotate(0deg); }
+  to   { transform: translate(-4vmax, 3vmax) rotate(12deg); }
+}
+
+@keyframes floaty {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-12px); }
+}

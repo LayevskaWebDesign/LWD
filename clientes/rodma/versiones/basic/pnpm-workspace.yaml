@@ -1,0 +1,6 @@
+# Configuración de pnpm (pnpm 11 lee los ajustes desde aquí).
+# Permite que esbuild ejecute su build script (binario nativo que usa Vite).
+allowBuilds:
+  esbuild: true
+# No re-verificar/instalar dependencias antes de cada script (evita fricción en este flujo).
+verifyDepsBeforeRun: false
